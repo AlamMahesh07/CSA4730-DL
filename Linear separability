@@ -1,0 +1,24 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import Perceptron
+
+# Updated linearly separable data points
+X = np.array([[3, 4], [3, 3], [4, 4], [7, 2], [7, 3], [8, 2]])
+y = np.array([0, 0, 0, 1, 1, 1])
+
+# Train a Perceptron model
+model = Perceptron()
+model.fit(X, y)
+
+# Plot data points
+plt.scatter(X[:, 0], X[:, 1], c=y, cmap='bwr')
+
+# Plot decision boundary
+x_vals = np.linspace(1, 9, 100)
+y_vals = -(model.coef_[0][0] * x_vals + model.intercept_) / model.coef_[0][1]
+plt.plot(x_vals, y_vals, 'k--')
+
+plt.title("Linearly Separable Groups")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+plt.show()
